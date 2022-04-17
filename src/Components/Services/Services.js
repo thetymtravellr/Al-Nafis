@@ -5,7 +5,7 @@ import service1 from '../../Assets/images/doctor/stethoscope.png';
 
 const Services = () => {
     return (
-        <section id='banner' className='min-h-screen  max-w-7xl mx-auto relative'>
+        <section id='banner' className='min-h-screen  max-w-7xl mx-auto relative pt-20'>
             <h1 className='bg-section-title text-lime-500 w-fit mx-auto px-2 text-center text-3xl font-medium font-patua'>Services</h1>
             <div className='flex flex-wrap justify-center gap-6 mt-20'>
             <div className=" w-full max-w-xs overflow-hidden border-2 relative rounded">

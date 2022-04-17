@@ -5,6 +5,8 @@
   "dependencies": {
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.6",
+    "@splidejs/react-splide": "^0.7.5",
+    "@splidejs/splide-extension-auto-scroll": "^0.4.2",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
