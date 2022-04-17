@@ -1,7 +1,7 @@
 
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
-import { onAuthStateChanged, signOut } from 'firebase/auth'
+import { signOut } from 'firebase/auth'
 import { Fragment } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { Link } from 'react-router-dom'
@@ -11,10 +11,6 @@ import auth from '../../firebase.init'
 function Header() {
 
   const [user] = useAuthState(auth);
-
-  onAuthStateChanged(auth,user =>{
-    console.log(user);
-  })
 
   const handleSignOut = () => {
     signOut(auth);
@@ -62,6 +58,7 @@ function Header() {
                     <Link className='text-gray-400 hover:bg-indigo-100 hover:text-indigo-500 px-4 py-1 rounded text-base font-medium ' to='/#banner'>Home</Link>
                     <Link className='text-gray-400 hover:bg-indigo-100 hover:text-indigo-500 px-4 py-1 rounded text-base font-medium ' to='/#service'>Service</Link>
                     <Link className='text-gray-400 hover:bg-indigo-100 hover:text-indigo-500 px-4 py-1 rounded text-base font-medium ' to='/'>Testimonial</Link>
+                    <Link className='text-gray-400 hover:bg-indigo-100 hover:text-indigo-500 px-4 py-1 rounded text-base font-medium ' to='/'>Blog</Link>
   
                   </div>
                 </div>

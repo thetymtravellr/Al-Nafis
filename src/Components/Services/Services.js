@@ -1,9 +1,14 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 import service3 from '../../Assets/images/doctor/medicine.png';
 import service2 from '../../Assets/images/doctor/pill.png';
 import service1 from '../../Assets/images/doctor/stethoscope.png';
+import auth from '../../firebase.init';
 
 const Services = () => {
+  const [user] = useAuthState(auth);
+
     return (
         <section id='banner' className='min-h-screen  max-w-7xl mx-auto relative pt-20'>
             <h1 className='bg-section-title text-lime-500 w-fit mx-auto px-2 text-center text-3xl font-medium font-patua'>Services</h1>
@@ -23,7 +28,9 @@ const Services = () => {
                     </p>
                     <div className="">
                        
-                    <button className="w-full bg-gradient-to-r  from-orange-300 to-amber-400 font-medium font-roboto hover:scale-105 drop-shadow-md shadow-cla-violate px-4 py-2 rounded">Get Started</button>
+                    <Link to='/checkout'>
+                   <button className="w-full bg-gradient-to-r  from-orange-300 to-amber-400 font-medium font-roboto hover:scale-105 drop-shadow-md shadow-cla-violate px-4 py-2 rounded">Get Started</button>
+                   </Link>
                      
                     </div>
                   </div>
@@ -43,8 +50,11 @@ const Services = () => {
                      
                         As A Physician I Give Treatment Which Works Effectively For Any Kind Of Fatal Disease.
                     </p>
-                    <div className="flex justify-center items-center flex-wrap ">
-                    <button className="w-full bg-gradient-to-r  from-orange-300 to-amber-400 font-medium font-roboto hover:scale-105 drop-shadow-md shadow-cla-violate px-4 py-2 rounded">Get Started</button>
+                    <div className=" ">
+
+                    <Link to='/checkout'>
+                   <button className="w-full bg-gradient-to-r  from-orange-300 to-amber-400 font-medium font-roboto hover:scale-105 drop-shadow-md shadow-cla-violate px-4 py-2 rounded">Get Started</button>
+                   </Link>
                      
                     </div>
                   </div>
@@ -63,9 +73,11 @@ const Services = () => {
                     <p className="leading-relaxed mb-3 font-poppins text-sm">
                          Al Nafis Doing Surgery Effectively For More Then 10+ Years. One Of The Best Of His Time.
                     </p>
-                    <div className="flex justify-center items-center flex-wrap ">
+                    <div className="">
                        
-                      <button className="w-full bg-gradient-to-r  from-orange-300 to-amber-400 font-medium font-roboto hover:scale-105 drop-shadow-md shadow-cla-violate px-4 py-2 rounded">Get Started</button>
+                    <Link to='/checkout'>
+                   <button className="w-full bg-gradient-to-r  from-orange-300 to-amber-400 font-medium font-roboto hover:scale-105 drop-shadow-md shadow-cla-violate px-4 py-2 rounded">Get Started</button>
+                   </Link>
                      
                     </div>
                   </div>

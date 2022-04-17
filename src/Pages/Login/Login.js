@@ -1,12 +1,18 @@
+import { onAuthStateChanged } from 'firebase/auth';
 import React, { useRef } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import facebook from '../../Assets/images//icons/facebook.png';
 import github from '../../Assets/images//icons/github.png';
 import google from '../../Assets/images//icons/google.png';
 import auth from '../../firebase.init';
 
 const Login = () => {
+
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const from = location.state?.from?.pathname || '/';
 
     const [
         signInWithEmailAndPassword,
@@ -38,6 +44,12 @@ const Login = () => {
     const [signInWithFacebook,facebookUser] = useSignInWithFacebook(auth);
 
     const [signInWithGithub, githubUser] = useSignInWithGithub(auth);
+
+    onAuthStateChanged(auth,user => {
+        if(user) {
+            navigate(from,{replace: true})
+        }
+    })
 
     return (
         <section className='min-h-screen flex items-center w-full'>
