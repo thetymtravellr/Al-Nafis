@@ -16,7 +16,7 @@ const Banner = () => {
              <img className='hidden md:block absolute bottom-44 right-96 -z-40' src={icon4} alt="" />
              <img className='hidden md:block absolute bottom-12 left-4 -z-40' src={icon5} alt="" />
          <div className='w-full max-w-xl text-center flex flex-col gap-8 order-2 lg:order-1'>
-                <h1 className='text-left text-indigo-900 mx-auto'> <span className='text-3xl'>Meet Dr.</span> <br /> <span className='font-bold text-6xl'>Ibn Al Nafis</span></h1>
+                <h1 className='text-center sm:text-left text-indigo-900 mx-auto'> <span className='text-3xl'>Meet Dr.</span> <br /> <span className='font-bold text-4xl sm:text-6xl'>Ibn Al Nafis</span></h1>
                 <p className='text-base text-gray-500 font-poppins '>
                     Dr. Al Nafis Is a Pediatricians, Emergency Physicians and a Neurologists For More Then 20+ Years. Feel better and live better with Dr. Al Nafis's proven, integrative approach.
                 </p>
