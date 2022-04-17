@@ -1,11 +1,16 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import auth from './firebase.init';
+import Header from './Components/Header/Header';
+import Home from './Pages/Home/Home';
 
 function App() {
-  console.log(auth)
+
   return (
     <>
-     <h1>hello</h1>
+     <Header></Header>
+     <Routes>
+       <Route path='/' element={<Home></Home>}></Route>
+     </Routes>
     </>
   );
 }
