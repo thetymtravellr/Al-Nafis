@@ -1,5 +1,4 @@
 
-/* This example requires Tailwind CSS v2.0+ */
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Fragment } from 'react'
@@ -48,15 +47,15 @@ function Header() {
                     ))} */}
                     <Link className='text-gray-400 hover:bg-indigo-100 hover:text-indigo-500 px-4 py-1 rounded text-base font-medium ' to='/#banner'>Home</Link>
                     <Link className='text-gray-400 hover:bg-indigo-100 hover:text-indigo-500 px-4 py-1 rounded text-base font-medium ' to='/#service'>Service</Link>
-                    <Link className='text-gray-400 hover:bg-indigo-100 hover:text-indigo-500 px-4 py-1 rounded text-base font-medium ' to='/'>Home</Link>
-                    <Link className='text-gray-400 hover:bg-indigo-100 hover:text-indigo-500 px-4 py-1 rounded text-base font-medium ' to='/'>Home</Link>
+                    <Link className='text-gray-400 hover:bg-indigo-100 hover:text-indigo-500 px-4 py-1 rounded text-base font-medium ' to='/'>Testimonial</Link>
+  
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-               <div>
-                 <button>Login</button>
-                 <button>Login</button>
+               <div className='flex gap-6'>
+                <Link to='/login'> <button className='hover:bg-gradient-to-r from-lime-600 to-lime-500 hover:text-white hover:border-lime-500 border-2 px-3 text-gray-600 py-1 rounded font-medium '>Login</button></Link>
+                 <button className='px-3 py-1 rounded font-medium text-white bg-gradient-to-r from-indigo-600 to-indigo-500'>Register</button>
                </div>
 
                 {/* Profile dropdown */}
