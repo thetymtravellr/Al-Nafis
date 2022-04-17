@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 import facebook from '../../Assets/images//icons/facebook.png';
 import github from '../../Assets/images//icons/github.png';
 import google from '../../Assets/images//icons/google.png';
@@ -34,9 +35,13 @@ const Login = () => {
 
     const [signInWithGoogle, googleUser] = useSignInWithGoogle(auth);
 
+    const [signInWithFacebook,facebookUser] = useSignInWithFacebook(auth);
+
+    const [signInWithGithub, githubUser] = useSignInWithGithub(auth);
+
     return (
         <section className='min-h-screen flex items-center w-full'>
-            <div className='bg-gray-50 p-4 m-4 w-full max-w-md mx-auto font-poppins'>
+            <div className='bg-gray-50 p-4 m-4 w-full max-w-md mx-auto font-poppins text-center'>
                 <h1 className='text-4xl mb-4 text-center font-patua text-indigo-400'>Login</h1>
                 <form className='flex flex-col gap-4 mb-4' onSubmit={handleFormSubmit}>
                     <input 
@@ -52,12 +57,20 @@ const Login = () => {
                     <p>or</p>
                     <p>continue with</p>
                 </div>
-                <div className='flex justify-center gap-8'>
-                    <button onClick={()=>signInWithGoogle()}><img className='w-12' src={google} alt="" /></button>
-                    <button><img className='w-12' src={facebook} alt="" /></button>
-                    <button><img className='w-12' src={github} alt="" /></button>
+                <div className='flex justify-center gap-8 mb-10'>
+                    <button onClick={()=>signInWithGoogle()}>
+                        <img className='w-12' src={google} alt="" />
+                    </button>
+                    <button onClick={()=>signInWithFacebook()}>
+                        <img className='w-12' src={facebook} alt="" />
+                        </button>
+                    <button onClick={()=>signInWithGithub()}>
+                        <img className='w-12' src={github} alt="" />
+                        </button>
                 </div>
+                <p >Don't have a account? <span><Link className='text-indigo-500' to='/register'>Register</Link></span></p>
             </div>
+           
         </section>
     );
 };
