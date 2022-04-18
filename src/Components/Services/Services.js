@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
-import service3 from '../../Assets/images/doctor/medicine.png';
-import service2 from '../../Assets/images/doctor/pill.png';
-import service1 from '../../Assets/images/doctor/stethoscope.png';
 import auth from '../../firebase.init';
+import ServiceItems from '../ServiceItems/ServiceItems';
 
 const Services = () => {
   const [user] = useAuthState(auth);
+
+  const [services, setServices] = useState([]);
+  useEffect(()=>{
+    fetch('data.json')
+    .then(res => res.json())
+    .then(data => setServices(data))
+  },[])
 
     return (
         <section id='services' className='min-h-screen  max-w-7xl mx-auto relative pt-20'>
             <h1 className='bg-section-title text-lime-500 w-fit mx-auto px-2 text-center text-3xl font-medium font-patua'>Services</h1>
             <div className='flex flex-wrap justify-center gap-6 mt-20'>
-            <div className=" w-full max-w-xs overflow-hidden border-2 relative rounded">
+              {
+                services.map(service => <ServiceItems
+                key={service.id}
+                service={service}
+                ></ServiceItems>)
+              }
+            {/* <div className=" w-full max-w-xs overflow-hidden border-2 relative rounded">
                 <div className="h-full   ">
                   <div className='w-full h-40 py-6 bg-blue-50'>
                   <img className="h-full mx-auto" src={service1} alt="blog"/>
@@ -82,7 +92,7 @@ const Services = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
         </section>
     );

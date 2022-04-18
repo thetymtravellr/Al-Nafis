@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Regular Checkup",
+    "desc": " Many Patient Needs Regular Checkups, I Give Them Checkup Based On Their Condition.",
+    "img": "https://i.ibb.co/bXDxPL1/online-marketing-h-Igeo-Qj-S-i-E-unsplash-1.jpg",
+    "price": 69
+  },
+  {
+    "id": 2,
+    "title": "Treatment",
+    "desc": " As A Physician I Give Treatment Which Works Effectively For Any Kind Of Fatal Disease.",
+    "img": "https://i.ibb.co/Rjs85cH/piron-guillaume-iwza-TMp-BD7-Q-unsplash-1.jpg",
+    "price": 149
+  },
+  {
+    "id": 3,
+    "title": "Surgery",
+    "desc": " I'm Doing Surgery Effectively For More Then 10+ Years. One Of The Best Of His Time..",
+    "img": "https://i.ibb.co/Zg0y4rL/myriam-zilles-Klto-LK6-Mk-g-unsplash-1.jpg",
+    "price": 225
+  }
+]

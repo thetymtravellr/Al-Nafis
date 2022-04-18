@@ -10,7 +10,8 @@ module.exports = {
       fontFamily: {
         'patua' : ['Patua One', 'cursive'],
         'poppins' : ['Poppins', 'sans-serif'],
-        'roboto' : ['Roboto', 'sans-serif']
+        'roboto' : ['Roboto', 'sans-serif'],
+        'square' : ['Square Peg', 'cursive']
       },
       keyframes: {
         'up-down': {

@@ -100,11 +100,13 @@ function Header() {
                  </Transition>
                </Menu>
                :
-               <div className='hidden md:block'>
-               <Link to='/login'> <button className='hover:bg-gradient-to-r from-lime-600 to-lime-500 hover:text-white hover:border-lime-500 border-2 px-3 mr-6 text-gray-600 py-1 rounded font-medium '>Login</button></Link>
+              <div className=''>
+                 <div className='hidden md:block'>
+               <Link to='/login'> <button className='hover:bg-gradient-to-r from-lime-600 to-lime-500 hover:text-white hover:border-lime-500 border-2 px-3 lg:mr-6 text-gray-600 py-1 rounded font-medium '>Login</button></Link>
                <Link to='/register'>
                <button className='px-3 py-1 rounded font-medium text-white bg-gradient-to-r from-indigo-600 to-indigo-500'>Register</button>
                </Link>
+              </div>
               </div>
                }
               </div>

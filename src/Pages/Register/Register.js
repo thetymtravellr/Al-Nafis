@@ -32,10 +32,14 @@ const Register = () => {
           const email = emailRef.current.value;
           const password = passwordRef.current.value;
 
-          createUserWithEmailAndPassword(auth,email,password)
-          .then((data)=>{
-              console.log(data.user);
-          })
+         if(password.length >= 6) {
+            createUserWithEmailAndPassword(auth,email,password)
+            .then((data)=>{
+                console.log(data.user);
+            })
+         } else {
+            toast.error('password have to be 6 or more character long',{id:'register'})
+         }
       }
 
       const [user] = useAuthState(auth);
@@ -52,7 +56,6 @@ const Register = () => {
             navigate(from,{replace:true})
         }
     },[googleUser , facebookUser, githubUser , user])
-
 
     return (
         <>
