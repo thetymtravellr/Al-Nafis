@@ -1,6 +1,5 @@
-import { onAuthStateChanged } from 'firebase/auth';
 import React, { useRef } from 'react';
-import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import facebook from '../../Assets/images//icons/facebook.png';
@@ -13,13 +12,7 @@ const Register = () => {
 
     const navigate = useNavigate()
     const location = useLocation()
-
     const from = location.state?.from?.pathname || '/';
-      
-    const [user] = useAuthState(auth);
-    onAuthStateChanged(auth,user => {
-        console.log(user);
-    })
 
     // Sign In With 3rd Party Auth Provider
 
@@ -54,26 +47,11 @@ const Register = () => {
             await createUserWithEmailAndPassword(email,password);
             await updateProfile({ displayName: name });
             toast.success('email verification sent',{id: 'verification'})
-            navigate('/')
+            navigate(from)
          } else {
             toast.error('password have to be 6 or more character long',{id:'register'})
          }
       }
-
-    //   const verifyEmail = () => {
-    //     sendEmailVerification(auth.currentUser)
-    //     .then(() => {
-    //       toast.success('email verification sent',{id:'verification'})
-    //     }); 
-    //   }
-
-  
-    //   useEffect(()=>{
-    //     if(googleUser || facebookUser || githubUser || user) {
-    //         toast.success('successfully Registered',{id:'register'})
-    //         navigate(from,{replace:true})
-    //     }
-    // },[googleUser , facebookUser, githubUser , user])
 
     return (
         <>
