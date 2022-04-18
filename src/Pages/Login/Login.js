@@ -23,12 +23,7 @@ const Login = () => {
 
     const [signInWithGithub, githubUser] = useSignInWithGithub(auth);
 
-        useEffect(()=>{
-            if(googleUser || facebookUser || githubUser || user) {
-                toast.success('successfully logged in',{id:'login'})
-                navigate(from,{replace: true})
-            }
-        },[googleUser , facebookUser, githubUser , user])
+ 
 
     //login with email & password
     const [
@@ -50,7 +45,12 @@ const Login = () => {
           signInWithEmailAndPassword(email, password)
       }
 
-
+      useEffect(()=>{
+        if(googleUser || facebookUser || githubUser || user) {
+            toast.success('successfully logged in',{id:'login'})
+            navigate(from,{replace: true})
+        }
+    },[googleUser , facebookUser, githubUser , user])
 
     return (
         <>

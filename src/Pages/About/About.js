@@ -18,7 +18,7 @@ const About = () => {
             </h3>
             <br />
             <p className="text-lg">
-              I am A Jr Frontend Web Developer. I Like To Upgrade My Self Day By Day. I Have A Plan For Next 6 Month. I Will Learn ReactJS. After That I Will Start Learning NodeJs along with TypeScript. Then I Will Dive Into NextJs. Beside These I Have Good Interest In Python and Django. I Wish I Could Learn Them Soon. Also I Will Be Learning Backend Development After Sometime
+              I am A Jr Frontend Web Developer. I Like To Upgrade My Self Day By Day. I Have A Plan For Next 6 Month. I Will Learn ReactJS. After That I Will Start Learning NodeJs along with TypeScript. Then I Will Dive Into NextJs. Beside These I Have Good Interest In Python and Django. I Wish I Could Learn Them Soon. Also I Will Be Learning Backend Development After Sometime. I am Working 6-8 Hours Daily For Achieving My Goals As Soon As Possible.
              </p>
           </div>
         </div>
