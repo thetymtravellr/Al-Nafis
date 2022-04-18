@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import facebook from '../../Assets/images//icons/facebook.png';
 import github from '../../Assets/images//icons/github.png';
 import google from '../../Assets/images//icons/google.png';
+import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import auth from '../../firebase.init';
 
@@ -91,6 +92,7 @@ const Register = () => {
                 <p >Already registered? <span><Link className='text-indigo-500' to='/login'>Login</Link></span></p>
             </div>
         </section>
+        <Footer></Footer>
         </>
     );
 };

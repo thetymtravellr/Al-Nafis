@@ -1,7 +1,7 @@
-import { async } from '@firebase/util';
 import React from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 
 const Checkout = () => {
@@ -113,6 +113,7 @@ const Checkout = () => {
 </div>
             </div>
         </section>
+        <Footer></Footer>
         </>
     );
 };

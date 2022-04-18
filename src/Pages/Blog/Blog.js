@@ -1,5 +1,6 @@
 import { Disclosure } from '@headlessui/react'
 import { ChevronUpIcon } from '@heroicons/react/solid'
+import Footer from '../../Components/Footer/Footer'
 import Header from '../../Components/Header/Header'
 
 export default function Blog() {
@@ -143,6 +144,7 @@ export default function Blog() {
       </div>
     </div>
     </section>
+    <Footer></Footer>
     </>
   )
 }
