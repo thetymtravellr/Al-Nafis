@@ -1,6 +1,6 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import React, { useEffect, useRef } from 'react';
-import { useAuthState, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { onAuthStateChanged } from 'firebase/auth';
+import React, { useRef } from 'react';
+import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import facebook from '../../Assets/images//icons/facebook.png';
@@ -15,47 +15,65 @@ const Register = () => {
     const location = useLocation()
 
     const from = location.state?.from?.pathname || '/';
+      
+    const [user] = useAuthState(auth);
+    onAuthStateChanged(auth,user => {
+        console.log(user);
+    })
 
-    // const [
-    //     createUserWithEmailAndPassword,
-    //     user,
-    //     loading,
-    //     error,
-    //   ] = useCreateUserWithEmailAndPassword(auth);
+    // Sign In With 3rd Party Auth Provider
+
+    const [signInWithGoogle, googleUser] = useSignInWithGoogle(auth);
+
+    const [signInWithFacebook,facebookUser] = useSignInWithFacebook(auth);
+
+    const [signInWithGithub, githubUser] = useSignInWithGithub(auth);
+
+    // create user with email and password
+
+    const [
+        createUserWithEmailAndPassword,
+        emailUser,
+        loading,
+        error,
+      ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification: true});
+      const [updateProfile, updating, profileUpdateError] = useUpdateProfile(auth);
 
       const emailRef = useRef('')
       const passwordRef = useRef('')
+      const nameRef = useRef('')
 
-      const handleSubmit = e => {
+      const handleSubmit = async e => {
           e.preventDefault()
 
+          const name = nameRef.current.value;
           const email = emailRef.current.value;
           const password = passwordRef.current.value;
 
          if(password.length >= 6) {
-            createUserWithEmailAndPassword(auth,email,password)
-            .then((data)=>{
-                console.log(data.user);
-            })
+            await createUserWithEmailAndPassword(email,password);
+            await updateProfile({ displayName: name });
+            toast.success('email verification sent',{id: 'verification'})
+            navigate('/')
          } else {
             toast.error('password have to be 6 or more character long',{id:'register'})
          }
       }
 
-      const [user] = useAuthState(auth);
+    //   const verifyEmail = () => {
+    //     sendEmailVerification(auth.currentUser)
+    //     .then(() => {
+    //       toast.success('email verification sent',{id:'verification'})
+    //     }); 
+    //   }
 
-      const [signInWithGoogle, googleUser] = useSignInWithGoogle(auth);
-
-      const [signInWithFacebook,facebookUser] = useSignInWithFacebook(auth);
   
-      const [signInWithGithub, githubUser] = useSignInWithGithub(auth);
-  
-      useEffect(()=>{
-        if(googleUser || facebookUser || githubUser || user) {
-            toast.success('successfully Registered',{id:'register'})
-            navigate(from,{replace:true})
-        }
-    },[googleUser , facebookUser, githubUser , user])
+    //   useEffect(()=>{
+    //     if(googleUser || facebookUser || githubUser || user) {
+    //         toast.success('successfully Registered',{id:'register'})
+    //         navigate(from,{replace:true})
+    //     }
+    // },[googleUser , facebookUser, githubUser , user])
 
     return (
         <>
@@ -65,6 +83,7 @@ const Register = () => {
                 <h1 className='text-4xl mb-4 text-center font-patua text-indigo-400'>Register</h1>
                 <form onSubmit={handleSubmit} className='flex flex-col gap-4 mb-4'>
                     <input 
+                    ref={nameRef}
                     className='border-2 px-4 py-2 rounded' type="text" placeholder='Enter name' required/>
                     <input 
                     ref={emailRef}
