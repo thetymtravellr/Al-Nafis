@@ -5,7 +5,10 @@ const Footer = () => {
     const year = d.getFullYear();
     return (
         <footer className='h-40 grid place-content-center bg-gray-200'>
+            <div className='text-center'>
             <p>All Right Reserved By Al Nafis. {year}</p>
+            <p>Created By Robiul Hasan</p>
+            </div>
         </footer>
     );
 };
