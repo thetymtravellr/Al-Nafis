@@ -5,9 +5,12 @@ import icon2 from '../../Assets/images/icons/download (2).png';
 import icon3 from '../../Assets/images/icons/download (3).png';
 import icon4 from '../../Assets/images/icons/download (4).png';
 import icon5 from '../../Assets/images/icons/download (5).png';
+import Header from '../Header/Header';
 
 const Banner = () => {
     return (
+        <>
+         <Header></Header>
         <section id='banner' className='min-h-screen  max-w-7xl mx-auto flex justify-center items-center my-20 lg:my-0 relative'>
          <div className='flex items-center justify-center flex-wrap h-full px-4'>
              <img className='hidden md:block absolute top-60 left-4 -z-40' src={icon1} alt="" />
@@ -30,6 +33,7 @@ const Banner = () => {
             </div>
          </div>
         </section>
+        </>
     );
 };
 

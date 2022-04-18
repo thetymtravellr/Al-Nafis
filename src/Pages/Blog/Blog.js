@@ -1,8 +1,11 @@
 import { Disclosure } from '@headlessui/react'
 import { ChevronUpIcon } from '@heroicons/react/solid'
+import Header from '../../Components/Header/Header'
 
 export default function Blog() {
   return (
+    <>
+        <Header></Header>
     <section className='min-h-screen flex flex-col
       max-w-7xl mx-auto mt-20'>
   <h1 className='text-center font-semibold text-4xl'>Welcome To My Blog</h1>
@@ -140,5 +143,6 @@ export default function Blog() {
       </div>
     </div>
     </section>
+    </>
   )
 }

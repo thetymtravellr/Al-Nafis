@@ -1,10 +1,11 @@
-import { onAuthStateChanged } from 'firebase/auth';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import facebook from '../../Assets/images//icons/facebook.png';
 import github from '../../Assets/images//icons/github.png';
 import google from '../../Assets/images//icons/google.png';
+import Header from '../../Components/Header/Header';
 import auth from '../../firebase.init';
 
 const Login = () => {
@@ -32,13 +33,11 @@ const Login = () => {
 
           const email = emailRef.current.value;
           const password = passwordRef.current.value;
-
+     
           signInWithEmailAndPassword(email, password)
       }
-
-      if(error){
-          console.log(error.code);
-      }
+      
+    
 
     const [signInWithGoogle, googleUser] = useSignInWithGoogle(auth);
 
@@ -46,23 +45,21 @@ const Login = () => {
 
     const [signInWithGithub, githubUser] = useSignInWithGithub(auth);
 
-    onAuthStateChanged(auth,user => {
-        if(user) {
-            navigate(from,{replace: true})
-        }
-    })
-    const [showError,setShowError] = useState(false);
+        useEffect(()=>{
+            if(googleUser || facebookUser || githubUser || user) {
+                toast.success('successfully logged in',{id:'login'})
+                navigate(from,{replace: true})
+            }
+        },[googleUser , facebookUser, githubUser , user])
 
-    useEffect(() => {
-       if(error) {
-        setTimeout(()=>{
-            setShowError(true)
-        },3000)
-       }
-      }, [error]);
+        if(error){
+            toast.error('something went wrong',{id:'login'})
+          }
 
     return (
-        <section className='min-h-screen flex items-center w-full'>
+        <>
+        <Header></Header>
+        <section className='min-h-screen flex items-center w-full relative'>
             <div className='bg-gray-50 p-4 m-4 w-full max-w-md mx-auto font-poppins text-center'>
                 <h1 className='text-4xl mb-4 text-center font-patua text-indigo-400'>Login</h1>
                 <form className='flex flex-col gap-4 mb-4' onSubmit={handleFormSubmit}>
@@ -72,12 +69,12 @@ const Login = () => {
                     <input 
                     ref={passwordRef}
                     className={`border-2 px-4 py-2 rounded `} type="password" placeholder='Enter password' required/>
-                    <div>
-                        {
-                           showError && <p>hello world</p>
-                        }
-                    </div>
-                    <button className='text-right'>forgot password?</button>
+
+                   <Link to='/resetpassword'>
+                   <button 
+                    className='text-right'>forgot password?</button>
+                   </Link>
+
                     <input className='bg-indigo-500 hover:bg-indigo-600 text-white py-2' type="submit" value="Login" />
                 </form>
                 <div className='text-center mb-4'>
@@ -99,6 +96,7 @@ const Login = () => {
             </div>
            
         </section>
+        </>
     );
 };
 

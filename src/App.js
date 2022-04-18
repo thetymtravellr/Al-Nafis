@@ -1,7 +1,8 @@
+import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Header from './Components/Header/Header';
 import RequireAuth from './Components/RequireAuth/RequireAuth';
+import InputField from './Components/ResetPassword/ResetPassword';
 import Blog from './Pages/Blog/Blog';
 import Checkout from './Pages/Checkout/Checkout';
 import Home from './Pages/Home/Home';
@@ -13,18 +14,21 @@ function App() {
 
   return (
     <>
-     <Header></Header>
      <Routes>
        <Route path='/' element={<Home></Home>}></Route>
        <Route path='/login' element={<Login></Login>}></Route>
        <Route path='/register' element={<Register></Register>}></Route>
        <Route path='/about' element={<Home></Home>}></Route>
        <Route path='/blog' element={<Blog></Blog>}></Route>
-       <Route path='/checkout/:user' element={<RequireAuth>
-         <Checkout></Checkout>
-       </RequireAuth>}></Route>
+       <Route path='/checkout/:user' element={
+        <RequireAuth>
+           <Checkout></Checkout>
+        </RequireAuth>
+       }></Route>
+       <Route path='/resetpassword' element={<InputField></InputField>}></Route>
        <Route path='*' element={<NotFound></NotFound>}></Route>
      </Routes>
+     <Toaster />
     </>
   );
 }
