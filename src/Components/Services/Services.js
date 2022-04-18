@@ -27,8 +27,8 @@ const Services = () => {
                     Many Patient Needs Regular Checkups, I Give Them Checkup Based On Their Condition.
                     </p>
                     <div className="">
-                       
-                    <Link to='/checkout'>
+
+                    <Link to={`/checkout/${user?.uid}`}>
                    <button className="w-full bg-gradient-to-r  from-orange-300 to-amber-400 font-medium font-roboto hover:scale-105 drop-shadow-md shadow-cla-violate px-4 py-2 rounded">Get Started</button>
                    </Link>
                      
@@ -52,7 +52,7 @@ const Services = () => {
                     </p>
                     <div className=" ">
 
-                    <Link to='/checkout'>
+                    <Link to={`/checkout/${user?.uid}`}>
                    <button className="w-full bg-gradient-to-r  from-orange-300 to-amber-400 font-medium font-roboto hover:scale-105 drop-shadow-md shadow-cla-violate px-4 py-2 rounded">Get Started</button>
                    </Link>
                      
@@ -75,7 +75,7 @@ const Services = () => {
                     </p>
                     <div className="">
                        
-                    <Link to='/checkout'>
+                    <Link to={`/checkout/${user?.uid}`}>
                    <button className="w-full bg-gradient-to-r  from-orange-300 to-amber-400 font-medium font-roboto hover:scale-105 drop-shadow-md shadow-cla-violate px-4 py-2 rounded">Get Started</button>
                    </Link>
                      

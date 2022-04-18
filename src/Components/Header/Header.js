@@ -55,10 +55,10 @@ function Header() {
                         {item.name}
                       </a>
                     ))} */}
-                    <Link className='text-gray-400 hover:bg-indigo-100 hover:text-indigo-500 px-4 py-1 rounded text-base font-medium ' to='/#banner'>Home</Link>
-                    <Link className='text-gray-400 hover:bg-indigo-100 hover:text-indigo-500 px-4 py-1 rounded text-base font-medium ' to='/#service'>Service</Link>
+                    <Link className='text-gray-400 hover:bg-indigo-100 hover:text-indigo-500 px-4 py-1 rounded text-base font-medium ' to='/'>Home</Link>
+                    <Link className='text-gray-400 hover:bg-indigo-100 hover:text-indigo-500 px-4 py-1 rounded text-base font-medium ' to='/'>Service</Link>
                     <Link className='text-gray-400 hover:bg-indigo-100 hover:text-indigo-500 px-4 py-1 rounded text-base font-medium ' to='/'>Testimonial</Link>
-                    <Link className='text-gray-400 hover:bg-indigo-100 hover:text-indigo-500 px-4 py-1 rounded text-base font-medium ' to='/'>Blog</Link>
+                    <Link className='text-gray-400 hover:bg-indigo-100 hover:text-indigo-500 px-4 py-1 rounded text-base font-medium ' to='/blog'>Blog</Link>
   
                   </div>
                 </div>
@@ -111,8 +111,8 @@ function Header() {
                  </Transition>
                </Menu>
                :
-               <div className='flex gap-6'>
-               <Link to='/login'> <button className='hover:bg-gradient-to-r from-lime-600 to-lime-500 hover:text-white hover:border-lime-500 border-2 px-3 text-gray-600 py-1 rounded font-medium '>Login</button></Link>
+               <div className='hidden md:block'>
+               <Link to='/login'> <button className='hover:bg-gradient-to-r from-lime-600 to-lime-500 hover:text-white hover:border-lime-500 border-2 px-3 mr-6 text-gray-600 py-1 rounded font-medium '>Login</button></Link>
                <Link to='/register'>
                <button className='px-3 py-1 rounded font-medium text-white bg-gradient-to-r from-indigo-600 to-indigo-500'>Register</button>
                </Link>
@@ -125,10 +125,16 @@ function Header() {
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
 
-              <Link className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium' to='/'>Home</Link>
-              <Link className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium' to='/'>Home</Link>
-              <Link className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium' to='/'>Home</Link>
-              <Link className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium' to='/'>Home</Link>
+              <Link className='text-gray-500 hover:bg-indigo-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium' to='/'>Home</Link>
+              <Link className='text-gray-500 hover:bg-indigo-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium' to='/'>Service</Link>
+              <Link className='text-gray-500 hover:bg-indigo-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium' to='/'>Testimonial</Link>
+              <Link className='text-gray-500 hover:bg-indigo-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium' to='/'>Blog</Link>
+              <div className='flex gap-6'>
+               <Link to='/login'> <button className='hover:bg-gradient-to-r from-lime-600 to-lime-500 hover:text-white hover:border-lime-500 border-2 px-3 text-gray-600 py-1 rounded font-medium '>Login</button></Link>
+               <Link to='/register'>
+               <button className='px-3 py-1 rounded font-medium text-white bg-gradient-to-r from-indigo-600 to-indigo-500'>Register</button>
+               </Link>
+              </div>
               {/* {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}

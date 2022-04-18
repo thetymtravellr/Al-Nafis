@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from 'firebase/auth';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import facebook from '../../Assets/images//icons/facebook.png';
@@ -34,9 +34,10 @@ const Login = () => {
           const password = passwordRef.current.value;
 
           signInWithEmailAndPassword(email, password)
-          .catch(err => {
-              console.log(err.message);
-          })
+      }
+
+      if(error){
+          console.log(error.code);
       }
 
     const [signInWithGoogle, googleUser] = useSignInWithGoogle(auth);
@@ -50,6 +51,15 @@ const Login = () => {
             navigate(from,{replace: true})
         }
     })
+    const [showError,setShowError] = useState(false);
+
+    useEffect(() => {
+       if(error) {
+        setTimeout(()=>{
+            setShowError(true)
+        },3000)
+       }
+      }, [error]);
 
     return (
         <section className='min-h-screen flex items-center w-full'>
@@ -58,10 +68,15 @@ const Login = () => {
                 <form className='flex flex-col gap-4 mb-4' onSubmit={handleFormSubmit}>
                     <input 
                     ref={emailRef}
-                    className='border-2 px-4 py-2 rounded' type="email" placeholder='Enter email' required/>
+                    className={`border-2 px-4 py-2 rounded`} type="email" placeholder='Enter email' required/>
                     <input 
                     ref={passwordRef}
-                    className='border-2 px-4 py-2 rounded' type="password" placeholder='Enter password' required/>
+                    className={`border-2 px-4 py-2 rounded `} type="password" placeholder='Enter password' required/>
+                    <div>
+                        {
+                           showError && <p>hello world</p>
+                        }
+                    </div>
                     <button className='text-right'>forgot password?</button>
                     <input className='bg-indigo-500 hover:bg-indigo-600 text-white py-2' type="submit" value="Login" />
                 </form>
